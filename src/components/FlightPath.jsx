@@ -2,15 +2,22 @@ import { useEffect, useRef, useState } from "react";
 
 // Each layout has its own viewBox and quadratic bezier: [start, control, end]
 const LAYOUTS = {
+  // Laptop/desktop (>= 1024px): big curve behind the heading
   desktop: {
     viewBox: "0 0 1200 400",
     points: [[-20, 330], [600, -80], [1220, 260]],
     planeScale: 1.8,
+    className:
+      "pointer-events-none absolute inset-x-0 top-0 h-auto w-full text-primary",
   },
-  mobile: {
-    viewBox: "0 0 400 260",
-    points: [[-20, 200], [200, 20], [420, 180]],
-    planeScale: 1.7,
+  // Phones/tablets (< 1024px): sits in the gap between the logo and the heading
+  compact: {
+    viewBox: "0 0 400 130",
+    points: [[-20, 115], [200, -35], [420, 115]],
+    planeScale: 1.6,
+    className:
+      "pointer-events-none mx-auto mt-2 block h-auto w-full max-w-xl text-primary " +
+      "[mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]",
   },
 };
 
@@ -37,7 +44,7 @@ const transformFor = (layout, t) => {
 };
 
 function useIsDesktop() {
-  const query = "(min-width: 768px)";
+  const query = "(min-width: 1024px)";
   const [isDesktop, setIsDesktop] = useState(() => window.matchMedia(query).matches);
 
   useEffect(() => {
@@ -54,7 +61,7 @@ function useIsDesktop() {
 export default function FlightPath() {
   const planeRef = useRef(null);
   const isDesktop = useIsDesktop();
-  const layout = isDesktop ? LAYOUTS.desktop : LAYOUTS.mobile;
+  const layout = isDesktop ? LAYOUTS.desktop : LAYOUTS.compact;
   const [p0, p1, p2] = layout.points;
 
   useEffect(() => {
@@ -83,19 +90,14 @@ export default function FlightPath() {
   }, [layout]);
 
   return (
-    <svg
-      className="pointer-events-none absolute inset-x-0 top-0 h-auto w-full text-primary"
-      viewBox={layout.viewBox}
-      fill="none"
-      aria-hidden="true"
-    >
+    <svg className={layout.className} viewBox={layout.viewBox} fill="none" aria-hidden="true">
       <path
         d={`M ${p0[0]} ${p0[1]} Q ${p1[0]} ${p1[1]} ${p2[0]} ${p2[1]}`}
         stroke="currentColor"
         strokeOpacity="0.4"
         strokeWidth="3"
         strokeLinecap="round"
-        strokeDasharray="1 12"
+        strokeDasharray="1 16"
       />
       <g ref={planeRef} transform={transformFor(layout, T_START)} fill="currentColor">
         <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />

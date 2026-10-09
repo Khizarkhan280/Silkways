@@ -5,7 +5,7 @@ export default function Hero() {
   const { title, subtitle, partners, loginLabel, loginPath } = homeContent;
 
   return (
-    <section className="relative z-10 flex flex-col items-center px-6 pb-24 pt-32 text-center md:pt-44">
+    <section className="relative z-10 flex flex-col items-center px-6 pb-12 pt-2 text-center lg:pb-24 lg:pt-44">
       <h1 className="hero-title">{title}</h1>
       <p className="hero-subtitle">{subtitle}</p>
       <p className="hero-partners">{partners}</p>
