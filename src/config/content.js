@@ -23,3 +23,7 @@ export const authContent = {
   },
   forgotPassword: "Forgot password?",
 };
+export const authAside = {
+  title: "Silkways Cargo Portal",
+  text: "Domestic cargo with PIA, Shaheen and Air Blue.",
+};

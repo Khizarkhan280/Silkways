@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
 import AuthCard from "../components/auth/AuthCard";
 
 export default function Auth() {
@@ -16,11 +15,8 @@ export default function Auth() {
   };
 
   return (
-    <main className="auth-bg min-h-screen font-sans">
-      <Navbar />
-      <section className="flex justify-center px-4 py-8">
-        <AuthCard mode={mode} onSwitch={toggleMode} onSuccess={handleSuccess} />
-      </section>
+    <main className="auth-bg font-sans">
+      <AuthCard mode={mode} onSwitch={toggleMode} onSuccess={handleSuccess} />
     </main>
   );
 }
