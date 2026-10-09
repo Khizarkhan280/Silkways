@@ -43,7 +43,7 @@
 /* ---------- Auth ---------- */
 @layer components {
   .auth-bg {
-    @apply flex min-h-screen items-center justify-center bg-primary-50 p-4;
+    @apply flex min-h-dvh items-center justify-center bg-primary-50 p-4;
   }
   .auth-shell {
     @apply grid w-full max-w-4xl overflow-hidden rounded-3xl bg-white
