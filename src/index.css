@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* ---------- Theme tokens: change colors/fonts here ---------- */
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #1f2a44;        /* headings */
+  --color-muted: #5b6475;        /* body text */
+  --color-line: #cfd4dc;         /* borders */
+  --color-glow: #fbeefc;         /* soft pink glow at top */
+}
+
+/* ---------- Reusable component classes ---------- */
+@layer components {
+  /* faint grid + pink glow background (same look as reference) */
+  .page-bg {
+    background-color: #ffffff;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 50% 0%, var(--color-glow), transparent 70%),
+      linear-gradient(to right, rgb(0 0 0 / 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(0 0 0 / 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/70
+           px-8 py-2.5 text-sm font-medium text-brand shadow-sm transition
+           hover:bg-brand hover:text-white hover:border-brand;
+  }
+
+  .avatar-circle {
+    @apply flex h-28 w-28 items-center justify-center rounded-full bg-white
+           shadow-[0_8px_30px_rgb(0_0_0/0.08)];
+  }
+}
