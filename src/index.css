@@ -48,7 +48,8 @@
   }
   .auth-shell {
     @apply grid w-full max-w-4xl overflow-hidden rounded-3xl bg-white
-           shadow-[0_20px_60px_rgb(32_130_195/0.18)] md:grid-cols-[2fr_3fr];
+          shadow-[0_20px_60px_rgb(32_130_195/0.18)]
+          md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)];
   }
   .auth-aside {
     @apply relative hidden flex-col justify-between overflow-hidden bg-primary p-10 text-white md:flex;
@@ -83,7 +84,7 @@
           focus-within:bg-white focus-within:text-primary focus-within:ring-4 focus-within:ring-primary/15;
   }
   .auth-input-field {
-    @apply w-full bg-transparent text-sm text-brand placeholder-line outline-none;
+    @apply w-full min-w-0 bg-transparent text-sm text-brand placeholder-line outline-none;
   }
   .auth-link {
     @apply text-sm font-medium text-primary hover:text-primary-dark;
@@ -95,8 +96,8 @@
     @apply rounded-lg bg-primary-50 px-3 py-2 text-sm text-primary-dark;
   }
   .otp-box {
-    @apply h-12 min-w-0 flex-1 rounded-xl border border-line/50 bg-surface text-center text-lg
-          font-semibold text-brand outline-none transition focus:border-primary focus:bg-white
-          focus:ring-4 focus:ring-primary/15;
+    @apply h-14 w-0 min-w-0 flex-1 rounded-xl border border-line/50 bg-surface text-center
+          text-xl font-semibold text-brand outline-none transition focus:border-primary
+          focus:bg-white focus:ring-4 focus:ring-primary/15;
   }
 }
