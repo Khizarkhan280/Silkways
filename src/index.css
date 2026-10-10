@@ -14,6 +14,17 @@
   --color-muted: #5a6a77;
 }
 
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
 /* ---------- Shared ---------- */
 @layer components {
   .btn-primary {
