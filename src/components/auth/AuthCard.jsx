@@ -66,13 +66,13 @@ export default function AuthCard({ mode, onSwitch, onSuccess }) {
       {/* Form panel */}
       <div className="auth-panel">
         <Link to="/" aria-label="Home">
-          <img src={logo} alt="Silkways Cargo" className="h-12 w-auto" />
+          <img src={logo} alt="Silkways Cargo" className="auth-logo" />
         </Link>
 
         <h1 className="auth-title">{text.title}</h1>
         <p className="auth-subtitle">{text.subtitle}</p>
 
-        <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5">
+        <form onSubmit={handleSubmit} className="auth-form">
           {isSignup && (
             <AuthInput label="Full name" icon={UserIcon} name="name" type="text"
               placeholder="Your full name" value={form.name} onChange={handleChange} required />

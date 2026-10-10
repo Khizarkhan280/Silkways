@@ -16,7 +16,7 @@ const LAYOUTS = {
     points: [[-20, 115], [200, -35], [420, 115]],
     planeScale: 1.6,
     className:
-      "pointer-events-none mx-auto mt-2 block h-auto w-full max-w-xl text-primary " +
+      "pointer-events-none mx-auto mt-2 block h-auto max-h-[20dvh] w-full max-w-xl text-primary " +
       "[mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]",
   },
 };

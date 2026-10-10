@@ -30,10 +30,11 @@
     @apply relative overflow-hidden bg-linear-to-b from-primary-50 to-white to-70%;
   }
   .hero-title {
-    @apply mt-6 max-w-2xl text-4xl font-semibold leading-[1.1] tracking-tight text-brand md:text-6xl;
+    @apply mt-[clamp(0.75rem,3dvh,1.5rem)] max-w-2xl text-[length:clamp(2.25rem,min(8vw,9dvh),3.75rem)]
+          font-semibold leading-[1.1] tracking-tight text-brand;
   }
   .hero-subtitle {
-    @apply mt-5 text-xl font-medium text-primary md:text-2xl;
+    @apply mt-[clamp(0.75rem,2.5dvh,1.25rem)] text-xl font-medium text-primary md:text-2xl;
   }
   .hero-partners {
     @apply mt-3 max-w-md text-sm text-muted;
@@ -59,10 +60,16 @@
     @apply mt-3 text-sm text-white/80;
   }
   .auth-panel {
-    @apply px-8 py-10 sm:px-12;
+    @apply px-8 py-[clamp(1.5rem,5dvh,2.5rem)] sm:px-12;
+  }
+  .auth-logo {
+    @apply h-[clamp(2rem,6dvh,3rem)] w-auto;
   }
   .auth-title {
-    @apply mt-8 text-3xl font-semibold tracking-tight text-brand;
+    @apply mt-[clamp(1rem,3dvh,2rem)] text-3xl font-semibold tracking-tight text-brand;
+  }
+  .auth-form {
+    @apply mt-[clamp(1rem,3dvh,2rem)] flex flex-col gap-[clamp(0.75rem,2.2dvh,1.25rem)];
   }
   .auth-subtitle {
     @apply mt-1.5 text-sm text-muted;
@@ -71,9 +78,9 @@
     @apply text-sm font-medium text-brand;
   }
   .auth-input {
-    @apply mt-1.5 flex items-center gap-3 rounded-xl border border-line/50 bg-surface px-4 py-3
-           text-line transition focus-within:border-primary focus-within:bg-white
-           focus-within:text-primary focus-within:ring-4 focus-within:ring-primary/15;
+    @apply mt-1.5 flex items-center gap-3 rounded-xl border border-line/50 bg-surface px-4
+          py-[clamp(0.5rem,1.6dvh,0.75rem)] text-line transition focus-within:border-primary
+          focus-within:bg-white focus-within:text-primary focus-within:ring-4 focus-within:ring-primary/15;
   }
   .auth-input-field {
     @apply w-full bg-transparent text-sm text-brand placeholder-line outline-none;

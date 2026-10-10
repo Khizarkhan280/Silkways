@@ -4,7 +4,7 @@ import FlightPath from "../components/FlightPath";
 
 export default function Home() {
   return (
-    <main className="page-bg min-h-dvh font-sans">
+    <main className="page-bg flex min-h-dvh flex-col font-sans">
       <div className="relative z-10">
         <Navbar />
       </div>

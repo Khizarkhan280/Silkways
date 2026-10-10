@@ -5,12 +5,12 @@ export default function Hero() {
   const { title, subtitle, partners, loginLabel, loginPath } = homeContent;
 
   return (
-    <section className="relative z-10 flex flex-col items-center px-6 pb-12 pt-2 text-center lg:pb-24 lg:pt-44">
+    <section className="relative z-10 flex flex-1 -translate-y-[min(8dvh,3rem)] flex-col items-center justify-center px-6 pb-8 pt-2 text-center lg:translate-y-0 lg:pb-12 lg:pt-[calc(15vw-5.5rem)]">
       <h1 className="hero-title">{title}</h1>
       <p className="hero-subtitle">{subtitle}</p>
       <p className="hero-partners">{partners}</p>
 
-      <Link to={loginPath} className="btn-primary group mt-10 gap-2 px-12">
+      <Link to={loginPath} className="btn-primary group mt-[clamp(1.25rem,4dvh,2.5rem)] gap-2 px-12">
         {loginLabel}
         <svg
           className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
