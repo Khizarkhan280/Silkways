@@ -112,3 +112,57 @@
           focus:bg-white focus:ring-4 focus:ring-primary/15;
   }
 }
+
+/* ---------- Dashboard ---------- */
+@layer components {
+  .dash-shell {
+    @apply flex h-dvh overflow-hidden bg-primary-50 font-sans;
+  }
+  .sidebar {
+    @apply fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-primary-dark px-4 py-6 text-white
+           transition-transform duration-200 lg:static lg:shrink-0;
+  }
+  .sidebar-logo {
+    @apply flex items-center justify-center rounded-2xl bg-white p-3;
+  }
+  .nav-item {
+    @apply flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-white/80
+           transition hover:bg-white/10 hover:text-white;
+  }
+  .nav-item-active {
+    @apply bg-white text-primary-dark hover:bg-white hover:text-primary-dark;
+  }
+  .topbar {
+    @apply flex items-center px-4 py-4 sm:px-8;
+  }
+  .icon-btn {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-brand shadow-sm;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary bg-white px-5 py-2.5
+           text-sm font-semibold text-primary transition hover:bg-primary hover:text-white;
+  }
+  .welcome-banner {
+    @apply relative overflow-hidden rounded-3xl bg-linear-to-br from-primary-light/70 to-white
+           p-6 shadow-[0_10px_40px_rgb(32_130_195/0.12)] sm:p-10;
+  }
+  .welcome-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-brand;
+  }
+  .welcome-title {
+    @apply mt-2 text-3xl font-semibold leading-tight tracking-tight text-brand sm:text-4xl;
+  }
+  .welcome-subtitle {
+    @apply mt-3 text-lg font-medium text-primary;
+  }
+  .welcome-partners {
+    @apply mt-1 text-sm text-muted;
+  }
+  .dash-card {
+    @apply flex items-center gap-4 rounded-2xl bg-white p-5 shadow-[0_6px_24px_rgb(32_130_195/0.08)]
+           transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgb(32_130_195/0.16)];
+  }
+  .dash-card-icon {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary;
+  }
+}

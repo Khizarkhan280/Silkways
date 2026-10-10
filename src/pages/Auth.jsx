@@ -1,14 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthCard from "../components/auth/AuthCard";
+import { saveSession } from "../services/session";
 
 export default function Auth() {
   const [mode, setMode] = useState("signup"); // default: Create Account
+  const navigate = useNavigate();
 
   const handleSuccess = (data) => {
     if (mode === "signup") {
       setMode("login");
     } else {
-      console.log("Logged in:", data); // TODO: save token + redirect
+      saveSession(data);
+      navigate("/dashboard", { replace: true });
     }
   };
 

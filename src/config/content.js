@@ -44,3 +44,14 @@ export const forgotContent = {
     button: "Reset password",
   },
 };
+export const dashboardContent = {
+  banner: {
+    eyebrow: "Welcome to",
+    headingPlain: "Silkways",
+    headingAccent: "Cargo Portal",
+    subtitle: "Domestic Cargo",
+    partners: "We are Associate PIA, Shaheen, Air Blue",
+    cta: "Create New Bilty",
+  },
+  tagline: { line1: "Your Cargo", line2: "Our Priority" },
+};
