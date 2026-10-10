@@ -4,16 +4,19 @@ import { authContent, authAside } from "../../config/content";
 import { registerUser, loginUser } from "../../services/authApi";
 import logo from "../../assets/silkways-cargo-logo.svg";
 import AuthInput from "./AuthInput";
+import ForgotPasswordFlow from "./ForgotPasswordFlow";
 import { UserIcon, MailIcon, LockIcon } from "./icons";
 
 const emptyForm = { name: "", email: "", password: "" };
 
-export default function AuthCard({ mode, onSwitch, onSuccess }) {
+export default function AuthCard({ mode, setMode, onSuccess }) {
+  const isForgot = mode === "forgot";
   const isSignup = mode === "signup";
-  const text = authContent[mode];
+  const text = isForgot ? null : authContent[mode];
 
   const [form, setForm] = useState(emptyForm);
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) =>
@@ -22,6 +25,7 @@ export default function AuthCard({ mode, onSwitch, onSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setNotice("");
     setLoading(true);
     try {
       const data = isSignup
@@ -38,7 +42,20 @@ export default function AuthCard({ mode, onSwitch, onSuccess }) {
   const handleSwitch = () => {
     setForm(emptyForm);
     setError("");
-    onSwitch();
+    setNotice("");
+    setMode(isSignup ? "login" : "signup");
+  };
+
+  const openForgot = () => {
+    setError("");
+    setNotice("");
+    setMode("forgot");
+  };
+
+  const handleResetDone = () => {
+    setForm(emptyForm);
+    setNotice("Password updated. Log in with your new password.");
+    setMode("login");
   };
 
   return (
@@ -69,38 +86,45 @@ export default function AuthCard({ mode, onSwitch, onSuccess }) {
           <img src={logo} alt="Silkways Cargo" className="auth-logo" />
         </Link>
 
-        <h1 className="auth-title">{text.title}</h1>
-        <p className="auth-subtitle">{text.subtitle}</p>
+        {isForgot ? (
+          <ForgotPasswordFlow onBack={() => setMode("login")} onDone={handleResetDone} />
+        ) : (
+          <>
+            <h1 className="auth-title">{text.title}</h1>
+            <p className="auth-subtitle">{text.subtitle}</p>
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          {isSignup && (
-            <AuthInput label="Full name" icon={UserIcon} name="name" type="text"
-              placeholder="Your full name" value={form.name} onChange={handleChange} required />
-          )}
-          <AuthInput label="Email" icon={MailIcon} name="email" type="email"
-            placeholder="you@company.com" value={form.email} onChange={handleChange} required />
-          <AuthInput label="Password" icon={LockIcon} name="password" type="password"
-            placeholder="Enter your password" value={form.password} onChange={handleChange} required />
+            <form onSubmit={handleSubmit} className="auth-form">
+              {isSignup && (
+                <AuthInput label="Full name" icon={UserIcon} name="name" type="text"
+                  placeholder="Your full name" value={form.name} onChange={handleChange} required />
+              )}
+              <AuthInput label="Email" icon={MailIcon} name="email" type="email"
+                placeholder="you@company.com" value={form.email} onChange={handleChange} required />
+              <AuthInput label="Password" icon={LockIcon} name="password" type="password"
+                placeholder="Enter your password" value={form.password} onChange={handleChange} required />
 
-          {!isSignup && (
-            <button type="button" className="auth-link self-end">
-              {authContent.forgotPassword}
-            </button>
-          )}
+              {!isSignup && (
+                <button type="button" onClick={openForgot} className="auth-link self-end">
+                  {authContent.forgotPassword}
+                </button>
+              )}
 
-          {error && <p className="auth-error" role="alert">{error}</p>}
+              {notice && <p className="auth-info" role="status">{notice}</p>}
+              {error && <p className="auth-error" role="alert">{error}</p>}
 
-          <button type="submit" disabled={loading} className="btn-primary w-full">
-            {loading ? "Please wait..." : text.button}
-          </button>
-        </form>
+              <button type="submit" disabled={loading} className="btn-primary w-full">
+                {loading ? "Please wait..." : text.button}
+              </button>
+            </form>
 
-        <p className="mt-6 text-center text-sm text-muted">
-          {text.switchText}{" "}
-          <button type="button" onClick={handleSwitch} className="auth-link">
-            {text.switchLink}
-          </button>
-        </p>
+            <p className="mt-6 text-center text-sm text-muted">
+              {text.switchText}{" "}
+              <button type="button" onClick={handleSwitch} className="auth-link">
+                {text.switchLink}
+              </button>
+            </p>
+          </>
+        )}
       </div>
     </div>
   );

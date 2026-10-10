@@ -27,3 +27,20 @@ export const authAside = {
   title: "Silkways Cargo Portal",
   text: "Domestic cargo with PIA, Shaheen and Air Blue.",
 };
+export const forgotContent = {
+  email: {
+    title: "Reset password",
+    subtitle: "Enter your registered email address",
+    button: "Send code",
+  },
+  otp: {
+    title: "Enter the code",
+    subtitle: "Enter the 6-digit code sent to your email",
+    button: "Continue",
+  },
+  password: {
+    title: "New password",
+    subtitle: "Choose a new password for your account",
+    button: "Reset password",
+  },
+};

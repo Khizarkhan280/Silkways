@@ -91,4 +91,12 @@
   .auth-error {
     @apply rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600;
   }
+  .auth-info {
+    @apply rounded-lg bg-primary-50 px-3 py-2 text-sm text-primary-dark;
+  }
+  .otp-box {
+    @apply h-12 min-w-0 flex-1 rounded-xl border border-line/50 bg-surface text-center text-lg
+          font-semibold text-brand outline-none transition focus:border-primary focus:bg-white
+          focus:ring-4 focus:ring-primary/15;
+  }
 }

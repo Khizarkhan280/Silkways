@@ -13,3 +13,5 @@ async function request(path, body) {
 
 export const registerUser = (payload) => request("/auth/register", payload); // { name, email, password }
 export const loginUser = (payload) => request("/auth/login", payload);       // { email, password }
+export const sendResetOtp = (payload) => request("/auth/send-reset-otp", payload); // { email }
+export const resetPassword = (payload) => request("/auth/reset-password", payload); // { email, otp, newPassword }
